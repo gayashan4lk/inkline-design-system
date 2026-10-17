@@ -1,6 +1,6 @@
 # Changelog
 
-Current version: **1.0.0**
+Current version: **1.1.1**
 
 ## How Inkline is versioned
 
@@ -17,6 +17,29 @@ Rules for every change:
 3. Save the system with the version as its label (for example "v1.1.0"), so any release can be reopened or restored.
 4. Deprecate before removing: keep a renamed or retired token or prop for at least one minor release, with "Deprecated in x.y — use `new-name`" in its usage note, then remove it in the next major.
 5. Token names are the contract. Changing a value is usually a patch; renaming one is always a major.
+
+## 1.1.1 — 2026-10-17
+
+### Changed
+
+- Dark theme: `outline` is now `#7a7874` (the off-white `ink` at 50% brightness) instead of following `ink`, so card, button and input borders are softer. Still 4.1:1 against `canvas` and 3.8:1 against `paper`.
+- Dark theme: `shadow-lift` uses the same `#7a7874`.
+- Light theme unchanged.
+
+## 1.1.0 — 2026-10-17
+
+Dark mode.
+
+### Added
+
+- **Dark theme** (`dark`) for every color token: charcoal `canvas` (`#161513`) and `paper` (`#201e1b`), off-white `ink` and `outline` (`#f3efe7`), `ink-muted` `#b5afa4`, deep pastels (`lilac` `#3a2f37`, `sage` `#2c3733`, `peach` `#3d322b`, `periwinkle`, `mint`, `stone`), deep-blue `action` (`#263a63`), deeper `rose` (`#9c5570`), lighter `rose-ink`, `mention-ink`, `danger` and `focus` (`#7fa2f0`).
+- `shadow-lift` has a dark value: an off-white hard offset.
+- **Follow the device setting.** The bundle applies `dark` when the OS prefers dark and no `data-theme` is set on `<html>`, and keeps following OS changes. `Inkline.setTheme('light' | 'dark' | 'system')` switches or returns to following the OS.
+- Native form controls and scrollbars follow the theme (`color-scheme`).
+
+### Unchanged
+
+- The light theme, all token names and all component APIs.
 
 ## 1.0.0 — 2026-10-17
 

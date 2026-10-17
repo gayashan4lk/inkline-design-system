@@ -1,8 +1,8 @@
 # Inkline
 
-**Version 1.0.0** · [Changelog](CHANGELOG.md) · [Brand book](BRAND.md)
+**Version 1.1.1** · [Changelog](CHANGELOG.md) · [Brand book](BRAND.md)
 
-Inkline is a calm, hand-drawn-feeling design system for web apps: a warm off-white canvas with a dot grid, soft pastel blocks, and every container traced with a confident ink outline. It uses system fonts only.
+Inkline is a calm, hand-drawn-feeling design system for web apps: a warm off-white canvas with a dot grid, soft pastel blocks, and every container traced with a confident ink outline. It uses system fonts only and comes in light and dark themes.
 
 ## What's in this repo
 
@@ -11,7 +11,7 @@ Inkline is a calm, hand-drawn-feeling design system for web apps: a warm off-whi
 | `BRAND.md` | The brand book: principles, content, color, type, layout, iconography, states. Start here. |
 | `CHANGELOG.md` | Release history and the versioning rules. |
 | `tokens.json` | The source of truth for every token: colors, type styles, spacing, radii, strokes, shadow. |
-| `tokens.css` | `tokens.json` compiled to CSS custom properties and type-style classes (`.heading`, `.body`, `.label`…). |
+| `tokens.css` | `tokens.json` compiled to CSS custom properties for both themes, plus type-style classes (`.heading`, `.body`, `.label`…). |
 | `components/bundle.js` | The React components as one classic script that sets `window.Inkline`. Needs React 18 and ReactDOM 18 loaded first. |
 | `components/bundle.css` | Component styles; every value reads from the tokens. |
 | `components/index.d.ts` | Prop types for every component, as documentation. |
@@ -43,6 +43,16 @@ Components: `Button`, `Card`, `StatTile`, `Input`, `Tag`, `Avatar`, `CommentThre
 ```
 
 Add `class="ik-canvas"` to the page body for the dotted canvas background.
+
+## Light and dark
+
+The theme follows the device setting by default. To force one, set it on `<html>`:
+
+```html
+<html data-theme="dark">
+```
+
+or switch at runtime with `Inkline.setTheme('light')`, `Inkline.setTheme('dark')` or `Inkline.setTheme('system')`. Without the bundle, `tokens.css` alone also follows the OS through `prefers-color-scheme`.
 
 ## Versioning
 

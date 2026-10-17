@@ -1,4 +1,6 @@
 /* Inkline components. Every value comes from tokens.css custom properties. */
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"] { color-scheme: dark; }
 body { margin: 0; font-family: var(--font-sans); font-size: 15px; line-height: 22px; color: var(--ink); background: var(--canvas); -webkit-font-smoothing: antialiased; }
 .ik-canvas { background-color: var(--canvas); background-image: radial-gradient(circle, var(--canvas-dot) 1.2px, rgba(0, 0, 0, 0) 1.6px); background-size: var(--space-5) var(--space-5); }
 .ik-demo { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-4); padding: var(--space-5); }

@@ -171,6 +171,29 @@
       props.panelToggle === false ? null : h(Button, { variant: 'ghost', icon: 'sidebar', 'aria-label': ACTION_LABELS.sidebar, onClick: act('sidebar') }));
   }
 
-  var api = { Button: Button, Card: Card, StatTile: StatTile, Input: Input, Tag: Tag, Avatar: Avatar, CommentThread: CommentThread, MediaControls: MediaControls, Icon: Icon };
+  // Theme: follow the OS unless <html data-theme> is set; setTheme('light' | 'dark' | 'system') switches.
+  var root = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  var followingSystem = false;
+  var appliedBySystem = null;
+  function systemTheme() { return mq && mq.matches ? 'dark' : 'light'; }
+  function applySystem() {
+    appliedBySystem = systemTheme();
+    root.setAttribute('data-theme', appliedBySystem);
+  }
+  function onSystemChange() {
+    if (followingSystem && root.getAttribute('data-theme') === appliedBySystem) applySystem();
+  }
+  function setTheme(theme) {
+    if (theme === 'light' || theme === 'dark') { followingSystem = false; root.setAttribute('data-theme', theme); }
+    else { followingSystem = true; applySystem(); }
+  }
+  if (mq) {
+    if (mq.addEventListener) mq.addEventListener('change', onSystemChange);
+    else if (mq.addListener) mq.addListener(onSystemChange);
+  }
+  if (!root.hasAttribute('data-theme')) setTheme('system');
+
+  var api = { Button: Button, Card: Card, StatTile: StatTile, Input: Input, Tag: Tag, Avatar: Avatar, CommentThread: CommentThread, MediaControls: MediaControls, Icon: Icon, setTheme: setTheme };
   window.Inkline = Object.assign(window.Inkline || {}, api);
 })();

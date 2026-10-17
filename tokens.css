@@ -1,4 +1,5 @@
 /* Inkline — generated from tokens.json */
+
 :root, [data-theme="light"] {
   --canvas: #f3f3f1;
   --canvas-dot: #e2e2e0;
@@ -26,6 +27,66 @@
   --focus: #3d64c4;
   --shadow-lift: 0 3px 0 #121212;
 }
+
+[data-theme="dark"] {
+  --canvas: #161513;
+  --canvas-dot: #2a2825;
+  --paper: #201e1b;
+  --line: #34312c;
+  --ink: #f3efe7;
+  --ink-soft: #dcd6cb;
+  --ink-muted: #b5afa4;
+  --outline: #7a7874;
+  --lilac: #3a2f37;
+  --sage: #2c3733;
+  --peach: #3d322b;
+  --periwinkle: #32313d;
+  --mint: #2b3834;
+  --stone: #2a2824;
+  --rose: #9c5570;
+  --rose-ink: #e7a3bc;
+  --clay: #9a5a40;
+  --mention: #24324d;
+  --mention-ink: #b9cdf5;
+  --action: #263a63;
+  --action-hover: #2f4677;
+  --danger: #ef8a74;
+  --danger-soft: #3d221c;
+  --focus: #7fa2f0;
+  --shadow-lift: 0 3px 0 #7a7874;
+}
+
+/* No data-theme set: follow the OS setting. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #161513;
+    --canvas-dot: #2a2825;
+    --paper: #201e1b;
+    --line: #34312c;
+    --ink: #f3efe7;
+    --ink-soft: #dcd6cb;
+    --ink-muted: #b5afa4;
+    --outline: #7a7874;
+    --lilac: #3a2f37;
+    --sage: #2c3733;
+    --peach: #3d322b;
+    --periwinkle: #32313d;
+    --mint: #2b3834;
+    --stone: #2a2824;
+    --rose: #9c5570;
+    --rose-ink: #e7a3bc;
+    --clay: #9a5a40;
+    --mention: #24324d;
+    --mention-ink: #b9cdf5;
+    --action: #263a63;
+    --action-hover: #2f4677;
+    --danger: #ef8a74;
+    --danger-soft: #3d221c;
+    --focus: #7fa2f0;
+    --shadow-lift: 0 3px 0 #7a7874;
+  }
+}
+
 :root {
   --space-1: 4px;
   --space-2: 8px;
@@ -48,6 +109,7 @@
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
+
 .display-xl { font-family: var(--font-serif); font-size: 64px; line-height: 64px; font-weight: 400; letter-spacing: -0.02em; }
 .display { font-family: var(--font-serif); font-size: 44px; line-height: 48px; font-weight: 400; letter-spacing: -0.015em; }
 .display-sm { font-family: var(--font-serif); font-size: 28px; line-height: 34px; font-weight: 400; letter-spacing: -0.01em; }

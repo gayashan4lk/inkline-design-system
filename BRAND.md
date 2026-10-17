@@ -1,4 +1,4 @@
-**Version 1.0.0** · see the Changelog section for what changed in each release and how versions are numbered.
+**Version 1.1.1** · see the Changelog section for what changed in each release and how versions are numbered.
 
 Inkline is a calm, hand-drawn-feeling system for web apps: warm off-white canvas, soft pastel blocks, and every container traced with a confident ink outline. It feels like a well-kept notebook. It's friendly and editorial, and it's never glossy.
 
@@ -27,6 +27,14 @@ Inkline is a calm, hand-drawn-feeling system for web apps: warm off-white canvas
 - @mentions: `mention-ink` on `mention`.
 - Errors: `danger` text or border, `danger-soft` background, always with words. Inkline has no green "success" color. Confirm with words and an icon (`check`).
 - Focus: `focus` is a clear, strong blue. A 2px solid `focus` outline at 2px offset on buttons and other controls. Inputs show a single border instead: their `stroke-bold` outline turns `focus` (it stays `danger` when the field has an error).
+
+## Dark mode
+
+- Two themes: `light` (default) and `dark`. Every color token has a value for each, so components switch without any code change; always use tokens, never raw hex.
+- Dark keeps the same idea, inverted: a warm charcoal `canvas` with faint dots, `paper` panels a step lighter, deep muted pastels (`lilac`, `sage`, `peach`…), `ink` text turns warm off-white, and the 2px `outline` is that off-white at half brightness (`#7a7874`) so edges read clearly without glaring.
+- `action` (primary button) becomes deep blue with a light label; `rose` deepens so light text still reads on it; `focus` becomes a lighter blue that stands out on dark surfaces; `shadow-lift` uses the dark outline color.
+- Switching: by default the theme follows the device setting (`prefers-color-scheme`). Set `data-theme="light"` or `data-theme="dark"` on `<html>` to force one, or call `Inkline.setTheme('light' | 'dark' | 'system')`.
+- Contrast holds in both themes: body text 10:1 or better, `ink-muted` 5.6:1 or better on every surface and pastel, focus and outlines well above 3:1.
 
 ## Type
 

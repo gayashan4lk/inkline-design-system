@@ -119,11 +119,14 @@ export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
 }
 export declare function Icon(props: IconProps): React.ReactElement;
 
+/** 'light' or 'dark' forces a theme (sets <html data-theme>); 'system' follows the OS setting and its changes. The bundle starts in 'system' unless data-theme is already set. */
+export declare function setTheme(theme: 'light' | 'dark' | 'system'): void;
+
 declare global {
   interface Window {
     Inkline: {
       Button: typeof Button; Card: typeof Card; StatTile: typeof StatTile; Input: typeof Input; Tag: typeof Tag;
-      Avatar: typeof Avatar; CommentThread: typeof CommentThread; MediaControls: typeof MediaControls; Icon: typeof Icon;
+      Avatar: typeof Avatar; CommentThread: typeof CommentThread; MediaControls: typeof MediaControls; Icon: typeof Icon; setTheme: typeof setTheme;
     };
   }
 }
