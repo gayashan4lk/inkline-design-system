@@ -1,0 +1,27 @@
+<!-- @dsCard group="Actions" height=150 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Button — preview</title></head>
+<body>
+<div id="root" class="ik-demo ik-demo--col" style="align-items:flex-start"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h('div', { className: 'ik-row' },
+    h(I.Button, null, 'Save changes'),
+    h(I.Button, { variant: 'secondary', icon: 'download' }, 'Export'),
+    h(I.Button, { variant: 'accent', icon: 'play' }, 'Record demo'),
+    h(I.Button, { variant: 'secondary' }, 'Cancel'),
+    h(I.Button, { variant: 'secondary', icon: 'plus' }, 'Add'),
+    h(I.Button, { variant: 'secondary', icon: 'comment', 'aria-label': 'Add comment' }),
+    h(I.Button, { disabled: true }, 'Disabled')),
+    h('div', { className: 'ik-row' },
+      h(I.Button, { size: 'sm', icon: 'plus' }, 'Small'),
+      h(I.Button, { size: 'md', icon: 'plus' }, 'Medium'),
+      h(I.Button, { size: 'lg', icon: 'plus' }, 'Large'),
+      h(I.Button, { variant: 'secondary', size: 'sm', icon: 'comment', 'aria-label': 'Add comment, small' }),
+      h(I.Button, { variant: 'secondary', size: 'md', icon: 'comment', 'aria-label': 'Add comment, medium' }),
+      h(I.Button, { variant: 'secondary', size: 'lg', icon: 'comment', 'aria-label': 'Add comment, large' }))));
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Inkline</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--canvas); color:var(--ink); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; width:960px; height:288px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:288px; }
+  .lilac { fill:var(--lilac); }
+  .sage { fill:var(--sage); }
+  .peach { fill:var(--peach); }
+  .rose { fill:var(--rose); }
+  .deep { fill:var(--ink); }
+  .ol { stroke:var(--outline); stroke-width:var(--stroke-bold); }
+  .blk { rx:var(--radius-lg); }
+  .dot { fill:var(--paper); }
+  .words { position:absolute; left:var(--space-8); bottom:var(--space-8); max-width:440px; }
+  .name { margin:0; font-family:var(--font-serif); font-weight:400; font-size:112px; line-height:.92; letter-spacing:-.02em; color:var(--ink); }
+  .tag { margin:var(--space-3) 0 0 4px; font-size:14px; line-height:20px; color:var(--ink-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      lilac 176x96 + sage 176x96 stacked like the stat tiles · peach 152x140 bleeding off the top · rose 152x112 (the one accent) · ink slab 120x224 bleeding off the right edge, about 36% of 960x288
+  arrangement a staggered stack: two outlined tiles on the left, peach over rose in the middle column, the ink slab as the anchor
+  pattern     a dot grid cut in paper out of the ink slab, from "warm canvas with the dot grid (canvas-dot at a space-5 pitch)"; 4x8 = 32 dots at a space-6 pitch
+  scales      gutters space-4; insets space-6; corners radius-lg; outlines stroke-bold in outline
+-->
+<rect class="lilac ol blk" x="24" y="40" width="176" height="96" rx="20"/>
+<rect class="sage ol blk" x="24" y="152" width="176" height="96" rx="20"/>
+<rect class="peach ol blk" x="216" y="-24" width="152" height="144" rx="20"/>
+<rect class="rose ol blk" x="216" y="136" width="152" height="112" rx="20"/>
+<rect class="deep ol blk" x="384" y="24" width="120" height="224" rx="20"/>
+<g>
+<circle class="dot" cx="404" cy="52" r="2.5"/><circle class="dot" cx="428" cy="52" r="2.5"/><circle class="dot" cx="452" cy="52" r="2.5"/><circle class="dot" cx="476" cy="52" r="2.5"/>
+<circle class="dot" cx="404" cy="76" r="2.5"/><circle class="dot" cx="428" cy="76" r="2.5"/><circle class="dot" cx="452" cy="76" r="2.5"/><circle class="dot" cx="476" cy="76" r="2.5"/>
+<circle class="dot" cx="404" cy="100" r="2.5"/><circle class="dot" cx="428" cy="100" r="2.5"/><circle class="dot" cx="452" cy="100" r="2.5"/><circle class="dot" cx="476" cy="100" r="2.5"/>
+<circle class="dot" cx="404" cy="124" r="2.5"/><circle class="dot" cx="428" cy="124" r="2.5"/><circle class="dot" cx="452" cy="124" r="2.5"/><circle class="dot" cx="476" cy="124" r="2.5"/>
+<circle class="dot" cx="404" cy="148" r="2.5"/><circle class="dot" cx="428" cy="148" r="2.5"/><circle class="dot" cx="452" cy="148" r="2.5"/><circle class="dot" cx="476" cy="148" r="2.5"/>
+<circle class="dot" cx="404" cy="172" r="2.5"/><circle class="dot" cx="428" cy="172" r="2.5"/><circle class="dot" cx="452" cy="172" r="2.5"/><circle class="dot" cx="476" cy="172" r="2.5"/>
+<circle class="dot" cx="404" cy="196" r="2.5"/><circle class="dot" cx="428" cy="196" r="2.5"/><circle class="dot" cx="452" cy="196" r="2.5"/><circle class="dot" cx="476" cy="196" r="2.5"/>
+<circle class="dot" cx="404" cy="220" r="2.5"/><circle class="dot" cx="428" cy="220" r="2.5"/><circle class="dot" cx="452" cy="220" r="2.5"/><circle class="dot" cx="476" cy="220" r="2.5"/>
+</g>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">Inkline</h1>
+<p class="tag">Inked outlines, soft pastel fills, quiet serif numbers.</p>
+</div>
+</div>
+</body>
+</html>

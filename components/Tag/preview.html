@@ -1,0 +1,15 @@
+<!-- @dsCard group="Status" height=90 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Tag — preview</title></head>
+<body>
+<div id="root" class="ik-demo" style="align-items:center"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(I.Tag, null, 'Draft'), h(I.Tag, { tone: 'lilac' }, 'Interview'), h(I.Tag, { tone: 'sage' }, 'Design'),
+    h(I.Tag, { tone: 'peach' }, 'Motion'), h(I.Tag, { tone: 'rose' }, 'Selected'),
+    h('span', { className: 'body-lg' }, h(I.Tag, { tone: 'mention' }, '@Assistant'), ' did Nate change outfits here?')));
+</script>
+</body>
+</html>

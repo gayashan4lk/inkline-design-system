@@ -1,0 +1,16 @@
+<!-- @dsCard group="Identity" height=110 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Avatar — preview</title></head>
+<body>
+<div id="root" class="ik-demo" style="align-items:center"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(I.Avatar, { name: 'Michael', size: 'sm' }),
+    h(I.Avatar, { name: 'Nate', tone: 'mint' }),
+    h(I.Avatar, { name: 'Assistant', initial: 'A', tone: 'clay' }),
+    h(I.Avatar, { name: 'Priya', tone: 'peach', size: 'lg' })));
+</script>
+</body>
+</html>

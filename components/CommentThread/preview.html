@@ -1,0 +1,23 @@
+<!-- @dsCard group="Collaboration" height=420 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>CommentThread — preview</title></head>
+<body>
+<div id="root" class="ik-demo ik-canvas"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  function Demo() {
+    var s = React.useState(false), resolved = s[0], setResolved = s[1];
+    return h(I.CommentThread, {
+      resolved: resolved, onResolve: function () { setResolved(!resolved); },
+      comments: [
+        { author: 'Michael', tone: 'periwinkle', body: h(React.Fragment, null, h(I.Tag, { tone: 'mention' }, '@Assistant'), ' did Nate change outfits here?') },
+        { author: 'Assistant', initial: 'A', tone: 'clay', time: '0:14', body: 'Yes, at 0:14 he switches to an orange shirt.' },
+        { author: 'Nate', tone: 'mint', body: 'I\u2019m method acting!' }
+      ]
+    }, h(I.Input, { 'aria-label': 'Reply', placeholder: 'Reply\u2026' }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

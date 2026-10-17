@@ -1,0 +1,18 @@
+<!-- @dsCard group="Layout" height=300 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Card — preview</title></head>
+<body>
+<div id="root" class="ik-demo"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h('div', { style: { width: 320 } }, h(I.Card, { caption: 'Q3-Roadmap-Review.mov' },
+      h('div', { className: 'heading' }, 'Roadmap review'),
+      h('p', { style: { margin: '8px 0 0', color: 'var(--ink-muted)' } }, 'Three clips, 4 open comments. Last edited by Michael.'))),
+    h('div', { style: { width: 220, display: 'flex', flexDirection: 'column', gap: 16, marginTop: 28 } },
+      h(I.Card, { tone: 'sage', padding: 'sm' }, h('span', { className: 'body-strong' }, 'Sage card')),
+      h(I.Card, { tone: 'peach', padding: 'sm' }, h('span', { className: 'body-strong' }, 'Peach card, small padding')))));
+</script>
+</body>
+</html>

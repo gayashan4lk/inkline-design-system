@@ -1,0 +1,13 @@
+<!-- @dsCard group="Foundations" height=100 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Icon — preview</title></head>
+<body>
+<div id="root" class="ik-demo" style="align-items:center;gap:20px"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    I.Icon.names.map(function (n) { return h('span', { key: n, title: n }, h(I.Icon, { name: n, size: 22 })); })));
+</script>
+</body>
+</html>

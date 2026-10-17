@@ -1,0 +1,15 @@
+<!-- @dsCard group="Forms" height=200 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Input — preview</title></head>
+<body>
+<div id="root" class="ik-demo"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(I.Input, { label: 'File name', placeholder: 'Untitled recording', hint: 'Shown above the video frame.' }),
+    h(I.Input, { label: 'Team', defaultValue: 'D', error: 'Use 2–40 characters.' }),
+    h(I.Input, { label: 'Owner', defaultValue: 'Nate', disabled: true })));
+</script>
+</body>
+</html>

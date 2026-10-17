@@ -1,0 +1,20 @@
+<!-- @dsCard group="Media" height=200 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>MediaControls — preview</title></head>
+<body>
+<div id="root" class="ik-demo ik-demo--col ik-canvas"></div>
+<script>
+  var I = window.Inkline, h = React.createElement;
+  function Demo() {
+    var s = React.useState(0.38), p = s[0], setP = s[1];
+    var pl = React.useState(false), playing = pl[0], setPlaying = pl[1];
+    return h(React.Fragment, null,
+      h(I.MediaControls, { progress: p, playing: playing, segments: [2, 1.2, 3, 4, 2], onSeek: setP,
+        onPlayToggle: function () { setPlaying(!playing); }, onRestart: function () { setP(0); } }),
+      h(I.MediaControls, { progress: 0.08, segments: [1, 1, 2.2, 3, 1.4], panelToggle: false, actions: ['volume', 'expand'] }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>
