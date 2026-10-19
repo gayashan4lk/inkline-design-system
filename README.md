@@ -1,6 +1,6 @@
 # Inkline
 
-**Version 1.1.2** · [Changelog](CHANGELOG.md) · [Brand book](BRAND.md)
+**Version 1.2.0** · [Changelog](CHANGELOG.md) · [Brand book](BRAND.md)
 
 Inkline is a calm, hand-drawn-feeling design system for web apps: a warm off-white canvas with a dot grid, soft pastel blocks, and every container traced with a confident ink outline. It uses system fonts only and comes in light and dark themes.
 

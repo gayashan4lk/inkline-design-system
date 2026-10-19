@@ -1,6 +1,6 @@
 # Changelog
 
-Current version: **1.1.2**
+Current version: **1.2.0**
 
 ## How Inkline is versioned
 
@@ -17,6 +17,22 @@ Rules for every change:
 3. Save the system with the version as its label (for example "v1.1.0"), so any release can be reopened or restored.
 4. Deprecate before removing: keep a renamed or retired token or prop for at least one minor release, with "Deprecated in x.y — use `new-name`" in its usage note, then remove it in the next major.
 5. Token names are the contract. Changing a value is usually a patch; renaming one is always a major.
+
+## 1.2.0 — 2026-10-19
+
+Dark theme: softer text, clearer outlines. Text and outlines are now the same warm off-white at 75% (`#b6b3ad`), so body text glares less and card, button and input edges read more clearly. Text on rose and clay stays the full off-white. The light theme looks exactly the same.
+
+### Added
+
+- `ink-on-accent`: text and focus rings on `rose` and `clay` fills. The same as `ink` in light; `#f3efe7` in dark, 4.6:1 or better on `rose` and `clay`. The accent Button label and rose Tag use it, and inside `.ik-tone--rose` and `.ik-tone--clay` (Card, StatTile, Avatar) it replaces `ink`, `ink-muted` and `focus`.
+
+### Changed (dark theme only)
+
+- `ink`: `#f3efe7` → `#b6b3ad`. Body text is 5.8:1 or better on every surface and pastel (was 10.6:1).
+- `outline`: `#7a7874` → follows `ink` (`#b6b3ad`), 8.7:1 against `canvas` and 7.9:1 against `paper`. `shadow-lift` uses the same color.
+- `ink-muted`: `#b5afa4` → `#a7a197`, so labels, names and timestamps stay a step below body text; 4.7:1 or better on every surface and pastel.
+- `ink-soft`: `#dcd6cb` → `#a5a098`, still a step below `ink` for the pressed resolve toggle's hover; `paper` on it is 6.4:1.
+- `action-hover`: `#2f4677` → `#2d4372`, so the primary button's label stays above 4.5:1 on hover (4.6:1).
 
 ## 1.1.2 — 2026-10-19
 

@@ -17,7 +17,7 @@ Buttons trigger an action; use `primary` for the one main action in a view, `sec
 | `lg` | 48px | 16px | 20px | `space-5` | `radius-control-lg` |
 
 Icon-only buttons are circles of the same height (32 / 40 / 48). Use `md` almost everywhere, `sm` in dense rows and toolbars, `lg` for a single hero action (an empty state, a landing panel). Keep one size per row.
-- `accent`: a `rose` fill with `ink` text; darkens slightly on hover. Use it for the single moment you want to celebrate (Publish, Record).
+- `accent`: a `rose` fill with `ink-on-accent` text (the same as `ink` in light, the full off-white in dark); darkens slightly on hover. Use it for the single moment you want to celebrate (Publish, Record).
 - `ghost`: no border; `stone` on hover. Only for icon buttons in toolbars such as MediaControls — never for a labelled action like Cancel.
 - `disabled`: 45% opacity and a not-allowed cursor; no hover or press feedback on any variant.
 
