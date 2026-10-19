@@ -17,6 +17,8 @@ Inkline is a calm, hand-drawn-feeling design system for web apps: a warm off-whi
 | `components/index.d.ts` | Prop types for every component, as documentation. |
 | `components/<Name>/README.md` | Usage guidelines per component. |
 | `components/<Name>/preview.html` | Example markup for each component (rendered in the design-system viewer, which preloads the files above). |
+| `scripts/` | Release checks: `check_tokens.py` (tokens.css matches tokens.json), `check_versions.py` (version lines agree), `changelog_notes.py` (a version's CHANGELOG entry as release notes). |
+| `.github/workflows/` | **Checks** runs those checks on every pull request; **Release** publishes a GitHub release when a version tag is pushed. |
 
 Components: `Button`, `Card`, `StatTile`, `Input`, `Tag`, `Avatar`, `CommentThread`, `MediaControls`, `Icon`.
 
@@ -58,4 +60,19 @@ or switch at runtime with `Inkline.setTheme('light')`, `Inkline.setTheme('dark')
 
 Inkline follows semantic versioning. Every change gets a `CHANGELOG.md` entry and a matching git tag (`v1.0.0`, `v1.1.1`, …). See the versioning rules at the top of the changelog.
 
-`tokens.css` is generated: change `tokens.json`, then regenerate the CSS rather than editing it by hand.
+`tokens.css` is generated: change `tokens.json`, then regenerate the CSS rather than editing it by hand. The **Checks** workflow fails a pull request when the two disagree.
+
+### Releasing
+
+1. In a pull request, add the `CHANGELOG.md` entry (`## 1.2.0 — 2026-11-02`), and set the same version on the "Current version" line of `CHANGELOG.md` and the first line of `README.md` and `BRAND.md`. **Checks** fails if they disagree. The entry becomes the release notes, so write it for the people using Inkline.
+2. Merge, then tag the merge commit on `main` and push the tag:
+
+   ```bash
+   git switch main && git pull
+   git tag -a v1.2.0 -m "Inkline v1.2.0"
+   git push origin v1.2.0
+   ```
+
+3. The **Release** workflow checks that the tag is on `main`, that the version lines match the tag and that `tokens.css` matches `tokens.json`, then publishes the GitHub release "Inkline v1.2.0" with the CHANGELOG entry and a link to the full diff. A version with a suffix, such as `v2.0.0-rc.1`, is published as a pre-release.
+
+If the workflow fails, fix the problem on `main`, then move the tag to the fixed commit (`git tag -d v1.2.0 && git push origin :v1.2.0`, then tag and push again). Re-running it after a release exists updates that release's notes instead of failing.
