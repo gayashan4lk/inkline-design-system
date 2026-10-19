@@ -1,0 +1,27 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: tokens.css matches tokens.json
+        run: python3 scripts/check_tokens.py
+
+      - name: Version lines agree
+        run: python3 scripts/check_versions.py
+
+      - name: Latest CHANGELOG entry can become release notes
+        run: python3 scripts/changelog_notes.py "$(python3 scripts/check_versions.py)" > /dev/null
+
+      - name: bundle.js parses
+        run: node --check components/bundle.js
