@@ -2,7 +2,7 @@
 
 Buttons trigger an action; use `primary` for the one main action in a view, `secondary` for every other labelled action (Cancel included), `accent` sparingly and `ghost` only for icon buttons inside toolbars.
 
-**Provide:** `children` (label, sentence case) and/or `icon`; an icon-only button needs `aria-label`. Any native button prop passes through.
+**Provide:** `children` (label, sentence case) and/or `icon`; an icon-only button needs `aria-label` (the bundle logs a console warning without one). Any native button prop passes through.
 
 - `primary`: soft blue `action` fill, `ink` label, `outline` at `stroke-bold`; deepens to `action-hover` on hover. One per view, for the main action (Save changes).
 - `secondary`: `paper` fill, `ink` label, `outline` at `stroke-bold`; `stone` on hover. For every other action (Export, Add, Cancel).

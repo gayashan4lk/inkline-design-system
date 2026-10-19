@@ -1,6 +1,6 @@
 # Inkline
 
-**Version 1.1.1** · [Changelog](CHANGELOG.md) · [Brand book](BRAND.md)
+**Version 1.1.2** · [Changelog](CHANGELOG.md) · [Brand book](BRAND.md)
 
 Inkline is a calm, hand-drawn-feeling design system for web apps: a warm off-white canvas with a dot grid, soft pastel blocks, and every container traced with a confident ink outline. It uses system fonts only and comes in light and dark themes.
 
@@ -56,6 +56,6 @@ or switch at runtime with `Inkline.setTheme('light')`, `Inkline.setTheme('dark')
 
 ## Versioning
 
-Inkline follows semantic versioning. Every change gets a `CHANGELOG.md` entry and a matching git tag (`v1.0.0`, `v1.1.0`, …). See the versioning rules at the top of the changelog.
+Inkline follows semantic versioning. Every change gets a `CHANGELOG.md` entry and a matching git tag (`v1.0.0`, `v1.1.1`, …). See the versioning rules at the top of the changelog.
 
 `tokens.css` is generated: change `tokens.json`, then regenerate the CSS rather than editing it by hand.

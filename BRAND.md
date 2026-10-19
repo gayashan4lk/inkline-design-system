@@ -1,4 +1,4 @@
-**Version 1.1.1** · see the Changelog section for what changed in each release and how versions are numbered.
+**Version 1.1.2** · see the Changelog section for what changed in each release and how versions are numbered.
 
 Inkline is a calm, hand-drawn-feeling system for web apps: warm off-white canvas, soft pastel blocks, and every container traced with a confident ink outline. It feels like a well-kept notebook. It's friendly and editorial, and it's never glossy.
 
@@ -20,13 +20,13 @@ Inkline is a calm, hand-drawn-feeling system for web apps: warm off-white canvas
 ## Color
 
 - Page: `canvas` with the dot grid (`.ik-canvas`, dots in `canvas-dot` at a `space-5` pitch). Raised panels: `paper`.
-- Text: `ink` on any surface; `ink-muted` for labels, names, timestamps and hints (4.9:1 or better on every surface and pastel). Never put `paper` text on `rose` or `clay`.
-- Outlines: `outline` (an alias of `ink`) at `stroke-bold` on cards, inputs, buttons, threads and the media bar; `stroke-thin` on tags, avatars and progress segments. Dividers inside a surface: `line` at `stroke-hairline`.
+- Text: `ink` on any surface; `ink-muted` for labels, names, timestamps and hints (4.9:1 or better on every surface and pastel). Never put `paper` or `ink-muted` text on `rose` or `clay`; inside those fills, components switch muted text to `ink`.
+- Outlines: `outline` (equal to `ink` in light, a softer `#7a7874` in dark) at `stroke-bold` on cards, inputs, buttons, threads and the media bar; `stroke-thin` on tags, avatars and progress segments. Dividers inside a surface: `line` at `stroke-hairline`.
 - Pastel fills for cards, stat tiles, tags and avatars. Stack tiles in the order `lilac` → `sage` → `peach` when there's no meaning to assign.
 - `rose` is a fill only (progress, accent button, selected). Use `rose-ink` when rose has to be text.
 - @mentions: `mention-ink` on `mention`.
 - Errors: `danger` text or border, `danger-soft` background, always with words. Inkline has no green "success" color. Confirm with words and an icon (`check`).
-- Focus: `focus` is a clear, strong blue. A 2px solid `focus` outline at 2px offset on buttons and other controls. Inputs show a single border instead: their `stroke-bold` outline turns `focus` (it stays `danger` when the field has an error).
+- Focus: `focus` is a clear, strong blue. A 2px solid `focus` outline at 2px offset on buttons and other controls. Inputs show a thicker border instead: their `stroke-bold` outline turns `focus` and a 2px `focus` ring hugs it. With an error the border stays `danger` and the ring still shows, so focus is never hidden. Inside `rose` and `clay` fills, focus rings use `ink`.
 
 ## Dark mode
 
@@ -34,7 +34,7 @@ Inkline is a calm, hand-drawn-feeling system for web apps: warm off-white canvas
 - Dark keeps the same idea, inverted: a warm charcoal `canvas` with faint dots, `paper` panels a step lighter, deep muted pastels (`lilac`, `sage`, `peach`…), `ink` text turns warm off-white, and the 2px `outline` is that off-white at half brightness (`#7a7874`) so edges read clearly without glaring.
 - `action` (primary button) becomes deep blue with a light label; `rose` deepens so light text still reads on it; `focus` becomes a lighter blue that stands out on dark surfaces; `shadow-lift` uses the dark outline color.
 - Switching: by default the theme follows the device setting (`prefers-color-scheme`). Set `data-theme="light"` or `data-theme="dark"` on `<html>` to force one, or call `Inkline.setTheme('light' | 'dark' | 'system')`.
-- Contrast holds in both themes: body text 10:1 or better, `ink-muted` 5.6:1 or better on every surface and pastel, focus and outlines well above 3:1.
+- Contrast in dark: body text 10:1 or better, `ink-muted` 5.6:1 or better on every surface and pastel, `focus` 4.8:1 or better on every surface and pastel, and `outline` 4.1:1 against `canvas` and 3.8:1 against `paper`.
 
 ## Type
 
@@ -55,7 +55,7 @@ The system uses OS fonts only, with no web-font downloads.
 ## Iconography
 
 - These are line icons drawn in the bundle (`Icon`): a 24px grid, 2px stroke with round caps and joins, `currentColor`. Sizes are 16 (small buttons) and 18–20 (default).
-- Icons are always outlined, never filled, except the play triangle, which stays an outline too.
+- Icons are always outlined, never filled, the play triangle included.
 - Inkline has no logo yet. Set the product name in `serif` until you have one.
 
 ## States
@@ -64,4 +64,4 @@ The system uses OS fonts only, with no web-font downloads.
 - Hover: buttons stay flat — primary deepens to `action-hover`, secondary and ghost get a `stone` fill, accent darkens slightly. Cards and stat tiles lift 2px and gain `shadow-lift`, but are never clickable.
 - Disabled: 45% opacity, no hover or press feedback.
 - Selected / active: a `rose` fill with `ink` text, or `aria-pressed` with an `ink` fill and `paper` icon (the resolve button).
-- Motion: 120ms ease on the card lift and on button fills. Nothing bounces; the lift is turned off for reduced motion.
+- Motion: 120ms ease on the card lift and on button fills. Nothing bounces. With reduced motion the card doesn't move: it only gains `shadow-lift` on hover, with no transition.

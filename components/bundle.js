@@ -14,6 +14,12 @@
     return o;
   }
   function clamp(n) { return Math.max(0, Math.min(1, n)); }
+  var warned = {};
+  function warnOnce(msg) {
+    if (warned[msg] || !window.console) return;
+    warned[msg] = true;
+    console.warn('Inkline: ' + msg);
+  }
 
   var PATHS = {
     play: ['M7.5 4.8v14.4L19 12z'],
@@ -50,6 +56,9 @@
     var hasLabel = props.children != null && props.children !== false;
     var iconSize = size === 'sm' ? 16 : size === 'lg' ? 20 : 18;
     var rest = omit(props, ['variant', 'size', 'icon', 'iconAfter', 'className', 'children']);
+    if (!hasLabel && !props['aria-label'] && !props['aria-labelledby'] && !props.title) {
+      warnOnce('an icon-only Button' + (props.icon ? ' ("' + props.icon + '")' : '') + ' has no accessible name; pass aria-label.');
+    }
     return h('button', Object.assign({ type: 'button' }, rest, {
       className: cx('ik-btn', 'ik-btn--' + variant, 'ik-btn--' + size, !hasLabel && props.icon && 'ik-btn--icon', props.className)
     }),
@@ -103,7 +112,9 @@
     var name = props.name || '';
     var initial = props.initial || name.trim().charAt(0).toUpperCase();
     var rest = omit(props, ['name', 'initial', 'tone', 'size', 'ring', 'className']);
-    return h('span', Object.assign({ role: 'img', 'aria-label': name || initial }, rest, {
+    // With neither name nor initial there is nothing to announce: treat the avatar as decorative.
+    var a11y = name || initial ? { role: 'img', 'aria-label': name || initial } : { 'aria-hidden': 'true' };
+    return h('span', Object.assign(a11y, rest, {
       className: cx('ik-avatar', 'ik-avatar--' + (props.size || 'md'), 'ik-tone--' + (props.tone || 'periwinkle'), props.className)
     }), h('span', { 'aria-hidden': 'true' }, initial));
   }
@@ -131,6 +142,8 @@
   }
 
   var ACTION_LABELS = { comment: 'Add comment', volume: 'Volume', download: 'Download', expand: 'Full screen', sidebar: 'Toggle side panel' };
+  // Slider keys: arrows step 5%, Page Up/Down 10%, Home/End jump to the ends.
+  var SEEK_STEPS = { ArrowRight: 0.05, ArrowUp: 0.05, ArrowLeft: -0.05, ArrowDown: -0.05, PageUp: 0.1, PageDown: -0.1 };
 
   function MediaControls(props) {
     var segs = props.segments && props.segments.length ? props.segments : [1];
@@ -146,8 +159,13 @@
     }
     function key(e) {
       if (!props.onSeek) return;
-      if (e.key === 'ArrowRight') { e.preventDefault(); props.onSeek(clamp(p + 0.05)); }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); props.onSeek(clamp(p - 0.05)); }
+      var step = SEEK_STEPS[e.key], next;
+      if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = 1;
+      else if (typeof step === 'number') next = clamp(p + step);
+      else return;
+      e.preventDefault();
+      props.onSeek(next);
     }
     return h('div', { className: cx('ik-media', props.className), role: 'group', 'aria-label': props.label || 'Media controls' },
       h(Button, { variant: 'ghost', icon: props.playing ? 'pause' : 'play', 'aria-label': props.playing ? 'Pause' : 'Play', onClick: props.onPlayToggle }),
@@ -164,11 +182,12 @@
             h('span', { className: 'ik-seg__fill', style: { width: (f * 100) + '%' } }));
         }),
         h('span', { className: 'ik-track__thumb', style: { left: (p * 100) + '%' } })),
-      actions.map(function (a) {
-        return h(Button, { key: a, variant: 'ghost', icon: a, 'aria-label': ACTION_LABELS[a] || a, onClick: act(a) });
-      }),
-      props.panelToggle === false ? null : h('span', { className: 'ik-media__divider', 'aria-hidden': 'true' }),
-      props.panelToggle === false ? null : h(Button, { variant: 'ghost', icon: 'sidebar', 'aria-label': ACTION_LABELS.sidebar, onClick: act('sidebar') }));
+      h('div', { className: 'ik-media__actions' },
+        actions.map(function (a) {
+          return h(Button, { key: a, variant: 'ghost', icon: a, 'aria-label': ACTION_LABELS[a] || a, onClick: act(a) });
+        }),
+        props.panelToggle === false ? null : h('span', { className: 'ik-media__divider', 'aria-hidden': 'true' }),
+        props.panelToggle === false ? null : h(Button, { variant: 'ghost', icon: 'sidebar', 'aria-label': ACTION_LABELS.sidebar, onClick: act('sidebar') })));
   }
 
   // Theme: follow the OS unless <html data-theme> is set; setTheme('light' | 'dark' | 'system') switches.

@@ -1,6 +1,6 @@
 # Changelog
 
-Current version: **1.1.1**
+Current version: **1.1.2**
 
 ## How Inkline is versioned
 
@@ -18,6 +18,21 @@ Rules for every change:
 4. Deprecate before removing: keep a renamed or retired token or prop for at least one minor release, with "Deprecated in x.y — use `new-name`" in its usage note, then remove it in the next major.
 5. Token names are the contract. Changing a value is usually a patch; renaming one is always a major.
 
+## 1.1.2 — 2026-10-19
+
+Accessibility fixes. No token names, token values or component props changed.
+
+### Fixed
+
+- **Input:** a focused field with an error showed no focus at all. Focused inputs now also get a 2px `focus` ring hugging the border, so focus shows with or without an error and stands out in the dark theme (where the border alone only changed by 1.75:1). Visible in Windows high-contrast mode too.
+- **Card**, **StatTile** in `rose` or `clay` tones: `ink-muted` text (the stat label) was 2.2–2.6:1 and the `focus` ring around controls inside was 1.6–2.1:1. Inside `.ik-tone--rose` and `.ik-tone--clay`, `--ink-muted` and `--focus` now resolve to `ink`.
+- **Card**, **StatTile**: with reduced motion the hover lift still moved the card 2px. It now stays put and only gains `shadow-lift`.
+- **MediaControls:** the seek slider now handles ↑/↓ (5%), Page Up/Down (10%) and Home/End, not just ←/→. Below about 500px the bar overflowed and squeezed its icon buttons; the buttons now keep 40px and the action group wraps to a right-aligned second row. The action icons, divider and panel toggle now sit in a new `.ik-media__actions` wrapper.
+- **CommentThread:** the pressed resolve button now uses `ink-soft` on hover, as the token's usage note always said.
+- **Avatar:** with neither `name` nor `initial` it rendered an unlabeled `role="img"`; it's now `aria-hidden`.
+- **Button:** an icon-only button with no `aria-label`, `aria-labelledby` or `title` now logs a console warning (once per icon).
+- **Docs:** `focus` contrast in `tokens.json` (3.6:1 on light pastels, not 4.9:1); `ink-soft` contrast in dark (11.5:1); the brand book no longer calls dark `outline` an alias of `ink` and states dark contrast accurately; `index.d.ts` no longer says cards have no hover state; slider keys, icon-button warning and decorative avatars are documented; README tag example.
+
 ## 1.1.1 — 2026-10-17
 
 ### Changed
@@ -28,7 +43,7 @@ Rules for every change:
 
 ## 1.1.0 — 2026-10-17
 
-Dark mode.
+Dark mode. Released together with 1.1.1 in one commit, so there is no separate `v1.1.0` tag.
 
 ### Added
 

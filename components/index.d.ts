@@ -8,14 +8,14 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: 'primary' | 'secondary' | 'accent' | 'ghost';
   /** sm 32px · md 40px (default) · lg 48px. Text, icon, padding and corner radius scale; the 2px outline does not. */
   size?: 'sm' | 'md' | 'lg';
-  /** Leading icon. With no children the button becomes a round icon button: pass aria-label. */
+  /** Leading icon. With no children the button becomes a round icon button: pass aria-label (the bundle warns in the console without one). */
   icon?: IconName;
   iconAfter?: IconName;
   children?: React.ReactNode;
 }
 export declare function Button(props: ButtonProps): React.ReactElement;
 
-/** Cards are static containers: they take no click handler, never act as buttons or links, and have no hover state. */
+/** Cards are static containers: they take no click handler and never act as buttons or links. They lift 2px with shadow-lift on hover (no movement with reduced motion). */
 export interface CardProps extends Omit<React.HTMLAttributes<HTMLElement>, 'onClick' | 'tabIndex' | 'role'> {
   /** Fill color. Default paper. */
   tone?: Tone;
@@ -54,7 +54,7 @@ export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
 export declare function Tag(props: TagProps): React.ReactElement;
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** Person or agent name; used for aria-label and the initial. */
+  /** Person or agent name; used for aria-label and the initial. With neither name nor initial the avatar is decorative (aria-hidden). */
   name?: string;
   /** Override the initial shown. */
   initial?: string;
@@ -89,7 +89,7 @@ export declare function CommentThread(props: CommentThreadProps): React.ReactEle
 
 export interface MediaControlsProps {
   playing?: boolean;
-  /** 0–1 across the whole timeline. */
+  /** 0–1 across the whole timeline. The track is a keyboard slider: arrows step 5%, Page Up/Down 10%, Home/End jump to the ends. */
   progress?: number;
   /** Relative lengths of chapters / clips; drawn as separate pills. Default one segment. */
   segments?: number[];
